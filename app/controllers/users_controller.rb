@@ -3,6 +3,24 @@ class UsersController < ApplicationController
     render json: User.all
   end
 
+
+  def favorites
+    user = User.find_by(id: params[:user_id])
+    favorites = []
+    user.contacts.each do |contact|
+      if contact.favorited
+        favorites.push(contact)
+      end
+    end
+
+    user.contact_shares.each do |contact_share|
+      if contact_share.favorited
+        favorites.push(contact_share.contact)
+      end
+    end
+    render json: favorites
+  end
+
   def show
     user = User.find_by(id: params[:id])
     render json: user

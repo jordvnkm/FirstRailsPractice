@@ -28,6 +28,8 @@ Rails.application.routes.draw do
     resources :comments
   end
 
+  get 'users/:user_id/favorites' , to: 'users#favorites'
+
   resources :contact_shares, only: [:create, :destroy]
 
   resources :comments, only: [:create, :destroy]

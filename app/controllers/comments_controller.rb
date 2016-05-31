@@ -6,4 +6,6 @@ class CommentsController < ApplicationController
   def destroy
     render json: params
   end
+
+
 end
